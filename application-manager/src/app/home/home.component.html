@@ -1,0 +1,23 @@
+<div class="list-group users-list">
+  <div class="list-group users-list">
+    <div
+      class="list-group-item list-group-item-action flex-column"
+      *ngFor="let student of students"
+    >
+      <div class="row d-flex justify-content-between">
+        <div class="col col-md-10 text-col">
+          <h1 class="mb-1">{{student.payload.doc.data().firstName}} {{student.payload.doc.data().lastName}}</h1>
+        </div>
+        <div class="col col-md-2 actions-col">
+          <button
+            class="btn btn-outline-primary action"
+            type="button"
+            (click)="viewDetails(student)"
+          >
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
