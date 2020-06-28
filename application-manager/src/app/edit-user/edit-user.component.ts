@@ -46,9 +46,9 @@ export class EditUserComponent implements OnInit {
       wayOfCommunication: [this.studentApplication.wayOfCommunication, Validators.required],
       englishLevel: [this.studentApplication.englishLevel, Validators.required],
       availableToStart: [this.studentApplication.availableToStart.toDate(), Validators.required],
-      techSkills: [this.studentApplication.techSkills, Validators.required],
-      personalPresentation: [this.studentApplication.personalPresentation, Validators.required],
-      studyFromHome: [this.studentApplication.studyFromHome, Validators.required]
+      techSkills: [this.studentApplication.techSkills],
+      personalPresentation: [this.studentApplication.personalPresentation],
+      studyFromHome: [this.studentApplication.studyFromHome]
     });
   }
 

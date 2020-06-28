@@ -37,9 +37,9 @@ export class NewUserComponent implements OnInit {
       wayOfCommunication: ['', Validators.required],
       englishLevel: ['', Validators.required],
       availableToStart: ['', Validators.required],
-      techSkills: ['', Validators.required],
-      personalPresentation: ['', Validators.required],
-      studyFromHome: [true, Validators.required]
+      techSkills: [''],
+      personalPresentation: [''],
+      studyFromHome: ['']
     });
   }
 
@@ -54,9 +54,9 @@ export class NewUserComponent implements OnInit {
       wayOfCommunication: new FormControl('', Validators.required),
       englishLevel: new FormControl('', Validators.required),
       availableToStart: new FormControl('', Validators.required),
-      techSkills: new FormControl('', Validators.required),
-      personalPresentation: new FormControl('', Validators.required),
-      studyFromHome: new FormControl('', Validators.required),
+      techSkills: new FormControl(''),
+      personalPresentation: new FormControl(''),
+      studyFromHome: new FormControl(''),
 
     });
   }
