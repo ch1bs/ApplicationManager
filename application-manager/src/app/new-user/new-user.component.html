@@ -1,0 +1,127 @@
+<div class="create-page">
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item active" aria-current="page">Create User</li>
+    </ol>
+  </nav>
+  <div class="page-content">
+    <div class="row">
+      <div class="col col-md-8">
+
+
+        <form class="create-form" [formGroup]="userForm" (ngSubmit)="onSubmit(userForm.value)">
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput placeholder="First Name" class="form-control" formControlName="firstName" required>
+              <mat-error *ngIf="userForm.controls.firstName.invalid">First Name is required.</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput placeholder="Last Name" class="form-control" formControlName="lastName" required>
+              <mat-error *ngIf="userForm.controls.lastName.invalid">Last Name is required.</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput placeholder="Email" class="form-control" formControlName="email" required email>
+              <mat-error *ngIf="userForm.controls.email.invalid">Email is required and must be a valid email address.
+              </mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput type="number" min="0" placeholder="Age" class="form-control"
+                     formControlName="age" required>
+              <mat-error *ngIf="userForm.controls.age.invalid">Age is required.</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <input matInput type="tel" placeholder="Phone Number" class="form-control"
+                     formControlName="phoneNumber" required>
+              <mat-error *ngIf="userForm.controls.phoneNumber.invalid">Phone Number is required.</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group d-flex flex-column">
+            <mat-placeholder>Preferred way of communication</mat-placeholder>
+            <mat-radio-group formControlName="wayOfCommunication" required>
+              <mat-radio-button class="mr-3" value="email" color="primary">Email</mat-radio-button>
+              <mat-radio-button value="phone" color="primary">Phone</mat-radio-button>
+            </mat-radio-group>
+            <mat-error
+              *ngIf="userForm.controls.wayOfCommunication.invalid && userForm.controls.wayOfCommunication.touched">
+              Please select one option.
+            </mat-error>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field>
+              <mat-label>English Level</mat-label>
+              <mat-select formControlName="englishLevel" required>
+                <mat-option value="A1">A1</mat-option>
+                <mat-option value="A2">A2</mat-option>
+                <mat-option value="B1">B1</mat-option>
+                <mat-option value="B2">B2</mat-option>
+                <mat-option value="C1">C1</mat-option>
+                <mat-option value="C2">C2</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-error *ngIf="userForm.controls.englishLevel.invalid && userForm.controls.englishLevel.touched">
+              Please select level of English.
+            </mat-error>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field appearance="fill">
+              <mat-label>Available to start</mat-label>
+              <input matInput [matDatepicker]="picker" placeholder="available To Start" formControlName="availableToStart" required>
+              <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <mat-error *ngIf="userForm.controls.availableToStart.invalid && userForm.controls.availableToStart.touched">
+              Please select a date.
+            </mat-error>
+          </div>
+
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <mat-label>Tech skills and Courses</mat-label>
+              <textarea matInput placeholder="Technical skills and courses..."  formControlName="techSkills" required></textarea>
+              <mat-error *ngIf="userForm.controls.techSkills.invalid">Field is required.</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-form-field class="input-style">
+              <mat-label>Personal Presentation</mat-label>
+              <textarea matInput placeholder="Personal Bio..."  formControlName="personalPresentation" required></textarea>
+              <mat-error *ngIf="userForm.controls.personalPresentation.invalid">Field is required.</mat-error>
+            </mat-form-field>
+          </div>
+
+          <div class="form-group">
+            <mat-checkbox formControlName="studyFromHome">Check to test</mat-checkbox>
+          </div>
+
+          <div class="row submit-button-container">
+            <div class="col-md-4">
+              <button mat-raised-button class="submit-button" color="primary" type="submit"
+                      [disabled]="!userForm.valid">Create
+              </button>
+            </div>
+          </div>
+
+        </form>
+
+
+      </div>
+    </div>
+  </div>
+</div>
