@@ -24,6 +24,8 @@ import { MatSelectModule } from "@angular/material/select";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatNativeDateModule } from "@angular/material/core";
 import { MatCheckboxModule } from "@angular/material/checkbox";
+import { ToastrModule } from "ngx-toastr";
+import { SweetAlert2Module } from "@sweetalert2/ngx-sweetalert2";
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { MatCheckboxModule } from "@angular/material/checkbox";
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
+    ToastrModule.forRoot(),
+    SweetAlert2Module.forRoot(),
     RouterModule.forRoot(routes, {useHash: false}),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFirestoreModule,

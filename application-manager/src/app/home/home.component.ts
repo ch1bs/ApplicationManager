@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FirebaseService } from "../services/firebase.service";
-import { Router } from "@angular/router";
+import { FirebaseService } from '../services/firebase.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -9,12 +9,13 @@ import { Router } from "@angular/router";
 })
 export class HomeComponent implements OnInit {
 
-  items: Array<any>;
+  students: Array<any>;
 
   constructor(
     private firebaseService: FirebaseService,
     private router: Router
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getData();
@@ -23,13 +24,12 @@ export class HomeComponent implements OnInit {
   getData(): void {
     this.firebaseService.getUsers()
       .subscribe(result => {
-        this.items = result;
+        this.students = result;
       })
   }
 
-  viewDetails(item): void {
-    this.router.navigate(['/details/'+ item.payload.doc.id]);
+  viewDetails(student): void {
+    this.router.navigate([`/details/${student.payload.doc.id}`]);
   }
-
 
 }

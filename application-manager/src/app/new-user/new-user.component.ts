@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators } from "@angular/forms";
-import { Router } from "@angular/router";
-import { FirebaseService } from "../services/firebase.service";
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { FirebaseService } from '../services/firebase.service';
+import { IApplication } from '../shared/interfaces';
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   selector: 'app-new-user',
@@ -11,11 +13,13 @@ import { FirebaseService } from "../services/firebase.service";
 export class NewUserComponent implements OnInit {
 
   userForm: FormGroup;
+  studyFromHome = true;
 
   constructor(
     private fb: FormBuilder,
     private router: Router,
-    private firebaseService: FirebaseService
+    private firebaseService: FirebaseService,
+    private toastr: ToastrService
   ) {
   }
 
@@ -35,7 +39,7 @@ export class NewUserComponent implements OnInit {
       availableToStart: ['', Validators.required],
       techSkills: ['', Validators.required],
       personalPresentation: ['', Validators.required],
-      studyFromHome: ['', Validators.required]
+      studyFromHome: [true, Validators.required]
     });
   }
 
@@ -57,11 +61,12 @@ export class NewUserComponent implements OnInit {
     });
   }
 
-  onSubmit(value: any): void {
+  onSubmit(value: IApplication): void {
     this.firebaseService.createUser(value)
       .then(() => {
           this.resetFields();
           this.router.navigate(['/home']);
+          this.toastr.success('Student Created!')
         }
       )
   }
